@@ -1992,7 +1992,9 @@ input ~ span.error {
     }
 
     .instructions-info-block {
+        align-items: flex-start;
         gap: 16rem 0;
+        text-align: left;
     }
 
     .instructions-list {
