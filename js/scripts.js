@@ -5,6 +5,21 @@ $(window).scroll(function (evt) {
 });
 
 $(document).ready(function () {
+    // анимация меню
+    $('.menu').click(function (e) {
+        e.preventDefault();
+        (this.classList.contains('active') === true) ? this.classList.remove('active'): this.classList.add('active');
+
+        $('.header').toggleClass('active');
+        $('body').on('click', function (e) {
+            let div = $('.menu-links-wrapper, .menu');
+
+            if (!div.is(e.target) && div.has(e.target).length === 0) {
+                $('.header, .menu').removeClass('active');
+            }
+        });
+    });
+
     // якоря для ссылок
     $('body').on('click', '.anchor[href^="#"]', function () {
         $('.header').removeClass('active');
@@ -22,10 +37,10 @@ $(document).ready(function () {
     $('body').on('click','.tab-trigger', function(e){
         e.preventDefault();
         let tab = $(this).data('tab');
-        $(this).parent().find('.tab-trigger').removeClass('active');
+        $(this).parents('.section').find('.tab-trigger').removeClass('active');
         $(this).addClass('active');
-        $(this).parent().next().find('.tab-item').removeClass('active');
-        $(this).parent().next().find('.tab-item[data-tab="'+ tab +'"]').addClass('active');
+        $(this).parents('.section').find('.tab-item').removeClass('active');
+        $(this).parents('.section').find('.tab-item[data-tab="'+ tab +'"]').addClass('active');
     });
 
     // аккордеон
