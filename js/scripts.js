@@ -18,6 +18,16 @@ $(document).ready(function () {
         return false;
     });
 
+    // табы
+    $('body').on('click','.tab-trigger', function(e){
+        e.preventDefault();
+        let tab = $(this).data('tab');
+        $(this).parent().find('.tab-trigger').removeClass('active');
+        $(this).addClass('active');
+        $(this).parent().next().find('.tab-item').removeClass('active');
+        $(this).parent().next().find('.tab-item[data-tab="'+ tab +'"]').addClass('active');
+    });
+
     // аккордеон
     function openAccordion() {
         let wrap = $('.accordion-wrap');
@@ -151,5 +161,13 @@ $(document).ready(function () {
         slidesPerView: 1,
         loop: false,
         spaceBetween: 10,
+        pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 });
