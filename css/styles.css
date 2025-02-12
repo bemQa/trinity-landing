@@ -485,7 +485,7 @@ h6,
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .container {
@@ -696,14 +696,26 @@ h6,
 .footer {
     position: relative;
     padding: 32rem 0;
-    border-top: 1rem solid var(--lightgray-color);
 }
 
 .footer-container {
+    position: relative;
     max-width: 1344rem;
     width: 100%;
     margin: 0 auto;
     padding: 0 16rem;
+}
+
+.footer-container::before {
+    content: '';
+    position: absolute;
+    top: -32rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 32rem);
+    height: 1rem;
+    background: var(--lightgray-color);
 }
 
 .footer-copyright {
@@ -720,10 +732,6 @@ h6,
     display: flex;
     justify-content: space-between;
     gap: 0 24rem;
-}
-
-.footer-copyright-link {
-    
 }
 
 .btn-wrapper {
@@ -1069,12 +1077,19 @@ input ~ span.error {
 
 .advantages-wrapper {
     display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: space-between;
     gap: 0 32rem;
 }
 
+.advantages-img-block-sticky {
+    max-width: 640rem;
+    width: 100%;
+}
+
 .advantages-img-block {
+    position: sticky;
+    top: 120rem;
     display: flex;
     flex-direction: column;
     max-width: 640rem;
@@ -1138,12 +1153,18 @@ input ~ span.error {
 
 .colors-info-wrapper {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
     gap: 0 32rem;
 }
 
+.colors-info-title-block-sticky {
+    max-width: 640rem;
+    width: 100%;
+}
+
 .colors-info-title-block {
+    position: sticky;
+    top: 120rem;
     max-width: 640rem;
     width: 100%;
 }
@@ -1275,6 +1296,9 @@ input ~ span.error {
     margin: auto;
     width: 28rem;
     height: 26rem;
+    background: transparent;
+    border-radius: 26rem;
+    transition: all .3s ease;
 }
 
 .swiper-button-prev {
@@ -1283,6 +1307,11 @@ input ~ span.error {
 
 .swiper-button-next {
     right: -100rem;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: var(--main-hover-color);
 }
 
 .swiper-button-prev::after,
@@ -1354,12 +1383,18 @@ input ~ span.error {
 
 .prepared-colors-wrapper {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
     gap: 0 32rem;
 }
 
+.prepared-colors-title-block-sticky {
+    max-width: 640rem;
+    width: 100%;
+}
+
 .prepared-colors-title-block {
+    position: sticky;
+    top: 120rem;
     display: flex;
     flex-direction: column;
     gap: 16rem 0;
@@ -1592,6 +1627,10 @@ input ~ span.error {
     grid-column-end: span 6;
 }
 
+.project-img {
+    line-height: 0;
+}
+
 .project-img img {
     border-radius: 8rem;
 }
@@ -1637,12 +1676,18 @@ input ~ span.error {
 
 .dealers-wrapper {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
     gap: 0 32rem;
 }
 
+.dealers-info-block-sticky {
+    max-width: 640rem;
+    width: 100%;
+}
+
 .dealers-info-block {
+    position: sticky;
+    top: 120rem;
     display: flex;
     flex-direction: column;
     gap: 16rem 0;
@@ -1840,7 +1885,7 @@ input ~ span.error {
     .btn-pdf::after {
         width: 32rem;
         height: 32rem;
-        background: url(../img/icons/pdf.svg) center/11rem no-repeat var(--white-color);
+        background: url(../img/icons/pdf.svg) center/12rem no-repeat var(--white-color);
     }
     
     .btn-phone {
@@ -1876,6 +1921,10 @@ input ~ span.error {
     .advantages-wrapper {
         flex-direction: column;
         gap: 16rem 0;
+    }
+
+    .advantages-img-block {
+        position: static;
     }
 
     .advantages-img-block-info {
@@ -1981,6 +2030,10 @@ input ~ span.error {
         gap: 32rem 0;
     }
 
+    .prepared-colors-title {
+        font-size: 28rem;
+    }
+
     .prepared-color {
         gap: 16rem 0;
         max-width: 100%;
@@ -1991,10 +2044,18 @@ input ~ span.error {
         height: 358rem;
     }
 
+    .section-instructions .container {
+        gap: 48rem 0;
+    }
+
     .instructions-info-block {
         align-items: flex-start;
         gap: 16rem 0;
         text-align: left;
+    }
+
+    .instructions-title {
+        font-size: 28rem;
     }
 
     .instructions-list {
@@ -2021,6 +2082,14 @@ input ~ span.error {
         gap: 40rem 0;
     }
 
+    .maps-title {
+        font-size: 28rem;
+    }
+
+    .maps-title br {
+        display: none;
+    }
+
     .maps-list {
         gap: 24rem 0;
     }
@@ -2041,6 +2110,14 @@ input ~ span.error {
     .portfolio-info-block {
         align-items: flex-start;
         text-align: left;
+    }
+
+    .portfolio-title {
+        font-size: 28rem;
+    }
+
+    .portfolio-title br {
+        display: none;
     }
 
     .projects {
@@ -2076,6 +2153,10 @@ input ~ span.error {
     .dealers-wrapper {
         flex-direction: column;
         gap: 40rem 0;
+    }
+
+    .dealers-title {
+        font-size: 28rem;
     }
 
     .dealers-info-block .btn {
