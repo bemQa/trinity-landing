@@ -137,12 +137,6 @@ $(document).ready(function () {
                     message: {
                         required: true 
                     },
-                    password: {
-                        required: true,
-                        normalizer: function normalizer(value) {
-                            return $.trim(value);
-                        }
-                    }
                 },
                 errorPlacement: function(error, element) {
                     let parent = $(element).parent();

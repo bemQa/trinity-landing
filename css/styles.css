@@ -770,6 +770,32 @@ h6,
     font-size: 15rem;
 }
 
+.btn-send {
+    width: 100%;
+    border: 1rem solid transparent;
+}
+
+.btn-send.sended {
+    gap: 0 8rem;
+    background: var(--white-color);
+    border-color: var(--lightgray-color);
+    color: var(--text-gray-color);
+    pointer-events: none;
+}
+
+.btn-send::after {
+    content: '';
+    position: relative;
+    width: 0;
+    height: 12rem;
+    background: url(../img/icons/check.svg) center/contain no-repeat;
+    transition: all .3s ease;
+}
+
+.btn-send.sended::after {
+    width: 14rem;
+}
+
 .btn:hover {
     opacity: 0.7;
 }
@@ -808,6 +834,85 @@ h6,
     border-radius: 40rem;
 }
 
+/* modals */
+.modal.fancybox-content {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: transparent;
+    visibility: inherit;
+}
+
+.modal {
+    display: none;
+    max-width: 640rem;
+    width: 100%;
+    padding: 0;
+    border-radius: 8rem;
+    background: var(--white-color);
+    color: var(--text-gray-color);
+    overflow: hidden;
+}
+
+.policy-modal {
+    max-width: 864rem;
+}
+
+.modal_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-title {
+    padding: 24rem 40rem;
+    font-weight: 500;
+    font-size: 32rem;
+    line-height: 1.3;
+    color: var(--text-main-color);
+}
+
+.modal_content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24rem 0;
+    max-height: calc(100vh - 170rem);
+    padding: 24rem 40rem 40rem;
+    border-top: 1rem solid var(--lightgray-color);
+    overflow-y: auto;
+}
+
+.modal>.f-button.is-close-btn {
+    top: 32rem;
+    right: 32rem;
+    width: 24rem;
+    height: 26rem;
+    opacity: 0.6;
+}
+
+.modal>.f-button.is-close-btn svg path {
+    stroke: var(--main-color);
+}
+
+.modal>.f-button.is-close-btn:hover {
+    opacity: 1;
+}
+
+.modal-text {
+    font-weight: 400;
+    font-size: 18rem;
+    line-height: 1.5;
+}
+
+.modal-text a {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.modal-text a:hover {
+    text-decoration: none;
+}
+/* end modals */
+
 /* forms */
 .form-wrapper {
     display: flex;
@@ -822,7 +927,7 @@ h6,
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60rem 0;
+    gap: 16rem 0;
 }
 
 .ip-cell {
@@ -830,42 +935,17 @@ h6,
     width: 100%;
 }
 
-.ip-cell-h {
-    position: relative;
-    display: flex;
-    align-items: baseline;
-    gap: 60rem;
-    width: 100%;
-}
-
-.ip-cell-ch {
-    position: relative;
-    width: 100%;
-    padding-left: 260rem;
-}
-
-.input-label {
-    min-width: 200rem;
-    font-size: 36rem;
-    line-height: 1;
-    text-align: right;
-}
-
-.input-text-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
 .input-text {
     font-weight: 400;
-    font-size: 22rem;
-    line-height: 1;
+    font-size: 15rem;
+    line-height: 1.5;
+    letter-spacing: 0.2rem;
     color: var(--text-main-color);
     width: 100%;
-    height: 52rem;
-    padding: 8rem 0;
-    background: transparent;
+    height: 48rem;
+    padding: 12rem 24rem;
+    background: var(--gray-color);
+    border-radius: 8rem;
     transition: all 0.3s ease;
 }
 
@@ -873,7 +953,7 @@ h6,
 .input-text:focus,
 .input-text.success,
 .input-text:valid {
-    
+    background: var(--lightgray-color);
 }
 
 .input-text.disabled,
@@ -884,11 +964,11 @@ h6,
 .has-error .input-text,
 .input-text.error {
     color: red;
-    
+    background: rgb(255 0 0 / 10%);
 }
 
 textarea.input-text {
-    height: 52rem;
+    height: 82rem;
 }
 
 .input-text::placeholder {
@@ -903,7 +983,7 @@ textarea.input-text {
 span.error {
     display: none;
     position: relative;
-    margin-top: 10rem;
+    margin-top: 8rem;
     font-size: 14rem;
     line-height: 1;
     color: red;
@@ -915,8 +995,8 @@ input ~ span.error {
 }
 
 .ip-cell-text {
-    margin-top: 16rem;
-    font-size: 14rem;
+    margin-top: 8rem;
+    font-size: 16rem;
     line-height: 1.3;
     color: var(--text-gray-color);
 }
@@ -930,10 +1010,11 @@ input ~ span.error {
 .rd + label {
     position: relative;
     display: inline-block;
-    padding-left: 40rem;
+    padding-left: 26rem;
     cursor: pointer;
-    font-size: 22rem;
-    line-height: normal;
+    font-size: 14rem;
+    line-height: 1.5;
+    letter-spacing: 0.2rem;
     color: var(--text-gray-color);
     transition: all 0.3s ease;
 }
@@ -941,26 +1022,24 @@ input ~ span.error {
 .ch + label::before {
     content: '';
     position: absolute;
-    top: 3rem;
+    top: 2rem;
     left: 0;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 4rem;
-    background: transparent;
-    border: 1rem solid var(--main-color);
+    width: 16rem;
+    height: 16rem;
+    border-radius: 16rem;
+    background: var(--gray-color);
     transition: all 0.3s ease;
 }
 
 .ch + label::after {
     content: '';
     position: absolute;
-    top: 7rem;
-    left: 4rem;
-    bottom: 0;
-    width: 12rem;
-    height: 12rem;
+    top: 5rem;
+    left: 3rem;
+    width: 10rem;
+    height: 10rem;
     background: var(--main-color);
-    border-radius: 3rem;
+    border-radius: 10rem;
     transform: scale(0);
     transition: all 0.2s linear;
 }
@@ -968,25 +1047,24 @@ input ~ span.error {
 .rd + label::before {
     content: '';
     position: absolute;
-    top: 3rem;
+    top: 2rem;
     left: 0;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 20rem;
-    background: transparent;
-    border: 1rem solid var(--main-color);
+    width: 16rem;
+    height: 16rem;
+    border-radius: 16rem;
+    background: var(--gray-color);
     transition: all 0.3s ease;
 }
 
 .rd + label::after {
     content: '';
     position: absolute;
-    top: 7rem;
-    left: 4rem;
-    width: 12rem;
-    height: 12rem;
+    top: 5rem;
+    left: 3rem;
+    width: 10rem;
+    height: 10rem;
     background: var(--main-color);
-    border-radius: 16rem;
+    border-radius: 10rem;
     transform: scale(0);
     transition: all 0.2s linear;
 }
@@ -1019,6 +1097,10 @@ input ~ span.error {
 .ch + label a:hover,
 .rd + label a:hover {
     text-decoration: none;
+}
+
+.form .btn-send {
+    margin-top: 8rem;
 }
 /* end forms */
 
@@ -1898,6 +1980,64 @@ input ~ span.error {
         height: 32rem;
         background: url(../img/icons/phone.svg) center/13rem no-repeat var(--white-color);
     }
+
+    /* form */
+    .form {
+        gap: 8rem 0;
+    }
+
+    .input-text {
+        font-size: 14rem;
+        height: 40rem;
+        padding: 8rem 16rem;
+    }
+
+    .ch + label,
+    .rd + label {
+        font-size: 12rem;
+    }
+
+    .ch + label::before {
+        top: 0;
+    }
+    
+    .ch + label::after {
+        top: 3rem;
+    }
+    
+    .rd + label::before {
+        top: 0;
+    }
+    
+    .rd + label::after {
+        top: 3rem;
+    }
+
+    .form .btn-send {
+        margin-top: 16rem;
+    }
+    /* end form */
+
+    /* modal */
+    .modal-title {
+        padding: 24rem;
+        font-size: 20rem;
+    }
+
+    .modal_content-wrapper {
+        padding: 24rem;
+    }
+
+    .is-compact .modal>.f-button.is-close-btn {
+        top: 24rem;
+        right: 24rem;
+        background: transparent;
+    }
+
+    .modal-text {
+        font-size: 14rem;
+    }
+    /* end modal */
 
     .section {
         padding: 64rem 0;
